@@ -1,8 +1,19 @@
 import golosinas.*
 
 object mariano {
-	var golosinas = []
-	 
+	const golosinas = []
+	
+	method comprarGolosinas(variasGolosinas){
+		golosinas.addAll(variasGolosinas)
+	}
+	
+	method baniar(unaGolosina){
+		if(golosinas.contains(unaGolosina) or unaGolosina.estaBaniada()){
+			self.error("La golosina ya la tiene Mariano o ya esta bañiada")
+		}
+		golosinas.add(new GolosinaBaniada(golosinaInterior = unaGolosina))
+	}
+	
 	method comprar(_golosina) { golosinas.add(_golosina) }
 	
 	method desechar (_golosina) { golosinas.remove(_golosina) }
